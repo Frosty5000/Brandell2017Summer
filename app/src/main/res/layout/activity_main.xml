@@ -106,12 +106,14 @@
             android:textColor="@android:color/black" />
     </LinearLayout>
 
-    <ListView
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/activity_main_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/activity_main_tool"
         android:layout_below="@id/activity_main_title"
         android:background="@android:color/darker_gray">
-    </ListView>
+    </LinearLayout>
 
 </RelativeLayout>
