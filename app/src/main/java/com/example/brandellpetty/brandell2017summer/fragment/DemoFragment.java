@@ -46,7 +46,7 @@ public class DemoFragment extends Fragment {
         contentList = new ArrayList<>();
         contentList.add("ViewPager");
         contentList.add("ImageScaleType");
-        contentList.add("9Patch");
+        contentList.add("Fart");
         contentList.add("9Patch");
         contentList.add("9Patch");
         contentList.add("9Patch");
