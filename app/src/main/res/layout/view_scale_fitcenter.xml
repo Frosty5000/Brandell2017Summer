@@ -24,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@android:color/white"
-        android:src="@mipmap/panda"
+        android:src="@mipmap/pic1"
         android:scaleType="fitCenter"
         android:layout_weight="10"/>
 
