@@ -1,15 +1,24 @@
 package com.example.brandellpetty.brandell2017summer.fragment;
 
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.example.brandellpetty.brandell2017summer.LaunchModeActivity;
+import com.example.brandellpetty.brandell2017summer.NinePatchActivity;
 import com.example.brandellpetty.brandell2017summer.R;
+import com.example.brandellpetty.brandell2017summer.ScaleTypeActivity;
+import com.example.brandellpetty.brandell2017summer.ViewPagerActivity;
+
 import com.example.brandellpetty.brandell2017summer.adapter.ListNormalAdapter;
+import com.example.brandellpetty.brandell2017summer.adapter.ScalePagerAdapter;
 
 import java.util.ArrayList;
 
@@ -41,22 +50,26 @@ public class DemoFragment extends Fragment {
 
     private ListView listView;
     private final ArrayList<String> contentList;
+    private final Context context;
 
     public DemoFragment(){
+        context = getContext();
+
         contentList = new ArrayList<>();
         contentList.add("ViewPager");
         contentList.add("ImageScaleType");
-        contentList.add("Fart");
         contentList.add("9Patch");
-        contentList.add("9Patch");
-        contentList.add("9Patch");
-        contentList.add("9Patch");
-        contentList.add("9Patch");
-        contentList.add("9Patch");
-        contentList.add("9Patch");
-        contentList.add("9Patch");
-        contentList.add("9Patch");
-        contentList.add("9Patch");
+        contentList.add("A");
+        contentList.add("B");
+        contentList.add("C");
+        contentList.add("D");
+        contentList.add("LaunchMode");
+        contentList.add("F");
+        contentList.add("G");
+        contentList.add("H");
+        contentList.add("I");
+        contentList.add("J");
+        contentList.add("K");
 
     }
 
@@ -75,6 +88,29 @@ public class DemoFragment extends Fragment {
         ListNormalAdapter adapter = new ListNormalAdapter(this.getContext(), contentList);
         listView.setAdapter(adapter);
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                switch (position){
+                    case 0:
+                        Intent intent = new Intent(getActivity(), ViewPagerActivity.class);
+                        startActivity(intent);
+                        break;
+                    case 1:
+                        Intent intent1 = new Intent(getActivity(), ScaleTypeActivity.class);
+                        startActivity(intent1);
+                        break;
+                    case 2:
+                        Intent intent2 = new Intent(getActivity(), NinePatchActivity.class);
+                        startActivity(intent2);
+                        break;
+                    case 7:
+                        Intent intent7 = new Intent(getActivity(), LaunchModeActivity.class);
+                        startActivity(intent7);
+                    default:
+                }
+            }
+        });
         return view;
     }
 
