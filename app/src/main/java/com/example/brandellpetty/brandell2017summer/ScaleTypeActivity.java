@@ -35,7 +35,6 @@ public class ScaleTypeActivity extends AppCompatActivity {
         view8 = lf.inflate(R.layout.view_scale_matrix, null);
 
 
-
         list.add(view1);
         list.add(view2);
         list.add(view3);
