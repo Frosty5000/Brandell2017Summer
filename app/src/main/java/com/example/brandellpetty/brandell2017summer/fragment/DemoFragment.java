@@ -1,6 +1,7 @@
 package com.example.brandellpetty.brandell2017summer.fragment;
 
 
+import android.app.Notification;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,14 +12,15 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.example.brandellpetty.brandell2017summer.LaunchModeActivity;
+import com.example.brandellpetty.brandell2017summer.ActivityA;
+import com.example.brandellpetty.brandell2017summer.AdvanceListViewActivity;
 import com.example.brandellpetty.brandell2017summer.NinePatchActivity;
+import com.example.brandellpetty.brandell2017summer.NotificationActivity;
 import com.example.brandellpetty.brandell2017summer.R;
 import com.example.brandellpetty.brandell2017summer.ScaleTypeActivity;
 import com.example.brandellpetty.brandell2017summer.ViewPagerActivity;
 
 import com.example.brandellpetty.brandell2017summer.adapter.ListNormalAdapter;
-import com.example.brandellpetty.brandell2017summer.adapter.ScalePagerAdapter;
 
 import java.util.ArrayList;
 
@@ -59,8 +61,8 @@ public class DemoFragment extends Fragment {
         contentList.add("ViewPager");
         contentList.add("ImageScaleType");
         contentList.add("9Patch");
-        contentList.add("A");
-        contentList.add("B");
+        contentList.add("Notification");
+        contentList.add("AdvanceListView");
         contentList.add("C");
         contentList.add("D");
         contentList.add("LaunchMode");
@@ -104,8 +106,16 @@ public class DemoFragment extends Fragment {
                         Intent intent2 = new Intent(getActivity(), NinePatchActivity.class);
                         startActivity(intent2);
                         break;
+                    case 3:
+                        Intent intent3 = new Intent(getActivity(), NotificationActivity.class);
+                        startActivity(intent3);
+                        break;
+                    case 4:
+                        Intent intent4 = new Intent(getActivity(), AdvanceListViewActivity.class);
+                        startActivity(intent4);
+                        break;
                     case 7:
-                        Intent intent7 = new Intent(getActivity(), LaunchModeActivity.class);
+                        Intent intent7 = new Intent(getActivity(), ActivityA.class);
                         startActivity(intent7);
                     default:
                 }
