@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.brandellpetty.brandell2017summer.R;
+import com.example.brandellpetty.brandell2017summer.util.UtilLog;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -54,6 +55,8 @@ public class RedFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        UtilLog.d("Fragment", "onCreate");
     }
 
     @Override

@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
-
 import com.example.brandellpetty.brandell2017summer.adapter.BaseViewPagerAdapter;
 import com.example.brandellpetty.brandell2017summer.fragment.BlueFragment;
 import com.example.brandellpetty.brandell2017summer.fragment.GreenFragment;
@@ -33,6 +32,7 @@ public class ViewPagerActivity extends AppCompatActivity {
                 new BaseViewPagerAdapter(getSupportFragmentManager(), list);
         viewPager.setAdapter(pagerAdapter);
         viewPager.setCurrentItem(1);
+        Log.d("Fragment", "onCreate");
 
 
     }
