@@ -14,6 +14,7 @@ import android.widget.ListView;
 
 import com.example.brandellpetty.brandell2017summer.ActivityA;
 import com.example.brandellpetty.brandell2017summer.AdvanceListViewActivity;
+import com.example.brandellpetty.brandell2017summer.AdvanceViewPagerActivity;
 import com.example.brandellpetty.brandell2017summer.NinePatchActivity;
 import com.example.brandellpetty.brandell2017summer.NotificationActivity;
 import com.example.brandellpetty.brandell2017summer.R;
@@ -63,7 +64,7 @@ public class DemoFragment extends Fragment {
         contentList.add("9Patch");
         contentList.add("Notification");
         contentList.add("AdvanceListView");
-        contentList.add("C");
+        contentList.add("AdvanceViewPager");
         contentList.add("D");
         contentList.add("LaunchMode");
         contentList.add("F");
@@ -113,6 +114,10 @@ public class DemoFragment extends Fragment {
                     case 4:
                         Intent intent4 = new Intent(getActivity(), AdvanceListViewActivity.class);
                         startActivity(intent4);
+                        break;
+                    case 5:
+                        Intent intent5 = new Intent(getActivity(), AdvanceViewPagerActivity.class);
+                        startActivity(intent5);
                         break;
                     case 7:
                         Intent intent7 = new Intent(getActivity(), ActivityA.class);

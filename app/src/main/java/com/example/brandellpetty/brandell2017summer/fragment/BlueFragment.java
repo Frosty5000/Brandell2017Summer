@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.brandellpetty.brandell2017summer.R;
+import com.example.brandellpetty.brandell2017summer.util.UtilLog;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -63,4 +64,33 @@ public class BlueFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_blue, container, false);
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        UtilLog.d("Fragment", "Blue:onStart");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        UtilLog.d("Fragment", "Blue:onResume");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        UtilLog.d("Fragment", "Blue:onPause");
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        UtilLog.d("Fragment", "Blue:onStop");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        UtilLog.d("Fragment", "Blue:onDestroy");
+    }
 }
