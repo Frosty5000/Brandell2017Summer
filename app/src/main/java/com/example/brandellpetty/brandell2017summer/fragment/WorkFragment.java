@@ -65,4 +65,5 @@ public class WorkFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_work, container, false);
     }
 
+
 }

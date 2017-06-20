@@ -12,4 +12,9 @@
     <string name="hello_blue_fragment">Hello blue fragment</string>
     <string name="hello_green_fragment">Hello green fragment</string>
     <string name="title_activity_scale_type">ScaleTypeActivity</string>
+    <string name="fragment_quizzes">This fragment is used for quizzes</string>
+    <string name="quiz_1">Quiz1</string>
+    <string name="quiz_2">Quiz2</string>
+    <string name="quiz_3">Quiz3</string>
+    <string name="motivation">You can do it!</string>
 </resources>

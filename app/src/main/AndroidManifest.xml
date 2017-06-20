@@ -31,7 +31,7 @@
         <activity android:name=".ActivityD" />
         <activity android:name=".NotificationActivity" />
         <activity android:name=".AdvanceListViewActivity" />
-        <activity android:name=".AdvanceViewPagerActivity"></activity>
+        <activity android:name=".AdvanceViewPagerActivity" />
     </application>
 
 </manifest>

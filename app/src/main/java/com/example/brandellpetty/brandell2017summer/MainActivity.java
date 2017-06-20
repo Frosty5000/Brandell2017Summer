@@ -65,4 +65,8 @@ public class MainActivity extends AppCompatActivity {
     public void login(View v){
         Toast.makeText(MainActivity.this, "You clicked login", Toast.LENGTH_SHORT).show();
     }
+
+    public void submit(View v){
+        Toast.makeText(MainActivity.this, "Submitted!", Toast.LENGTH_SHORT).show();
+    }
 }
