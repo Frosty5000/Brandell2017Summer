@@ -1,9 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.example.brandellpetty.brandell2017summer.ActivityA">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="A"
+        android:textSize="100dp"
+        android:gravity="center"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/activity_a_a"
+        android:layout_width="90dp"
+        android:layout_height="70dp"
+        android:text="A"
+        android:onClick="toA"
+        android:layout_alignBottom="@id/textView"
+        android:layout_marginLeft="25dp"/>
+
+    <Button
+        android:id="@+id/activity_a_b"
+        android:layout_width="90dp"
+        android:layout_height="70dp"
+        android:text="B"
+        android:onClick="toB"
+        android:layout_alignBottom="@id/textView"
+        android:layout_toEndOf="@id/activity_a_a"
+        />
+
+    <Button
+        android:id="@+id/activity_a_c"
+        android:layout_width="90dp"
+        android:layout_height="70dp"
+        android:text="C"
+        android:onClick="toC"
+        android:layout_alignBottom="@id/textView"
+        android:layout_toEndOf="@id/activity_a_b"
+        />
+
+    <Button
+        android:id="@+id/activity_a_d"
+        android:layout_width="90dp"
+        android:layout_height="70dp"
+        android:text="D"
+        android:onClick="toD"
+        android:layout_alignBottom="@id/textView"
+        android:layout_toEndOf="@id/activity_a_c"/>
+
+</RelativeLayout>
