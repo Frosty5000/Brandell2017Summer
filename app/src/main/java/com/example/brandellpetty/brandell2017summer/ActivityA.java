@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.brandellpetty.brandell2017summer.audio.BaseBean;
+
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -30,6 +32,19 @@ public class ActivityA extends BaseActivity {
         setContentView(R.layout.activity_a);
         Toast.makeText(this,"onCreate", Toast.LENGTH_SHORT).show();
         ButterKnife.bind(this);
+        Intent intent = getIntent();
+        Bundle bundle = intent.getBundleExtra("Bundle");
+        String bs = bundle.getString("StringBundle");
+        int bi = bundle.getInt("IntegerBundle",0);
+        showToast(bs);
+        showToast("Integer is:"+bi);
+        BaseBean bean = (BaseBean) bundle.getSerializable("Object");
+        shortToast(bean.getName());
+//        String s = intent.getStringExtra("StringInfo");
+//        int i = intent.getIntExtra("Integer", 0);
+//        showToast(s);
+       // shortToast(i+"");
+       // shortToast("Integer is:"+i);
     }
 
     @Override

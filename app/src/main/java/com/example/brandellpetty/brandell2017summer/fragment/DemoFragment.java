@@ -15,13 +15,17 @@ import android.widget.ListView;
 import com.example.brandellpetty.brandell2017summer.ActivityA;
 import com.example.brandellpetty.brandell2017summer.AdvanceListViewActivity;
 import com.example.brandellpetty.brandell2017summer.AdvanceViewPagerActivity;
+import com.example.brandellpetty.brandell2017summer.CheckBoxActivity;
 import com.example.brandellpetty.brandell2017summer.NinePatchActivity;
 import com.example.brandellpetty.brandell2017summer.NotificationActivity;
 import com.example.brandellpetty.brandell2017summer.R;
+import com.example.brandellpetty.brandell2017summer.RadioGroupActivity;
+import com.example.brandellpetty.brandell2017summer.ResultActivity;
 import com.example.brandellpetty.brandell2017summer.ScaleTypeActivity;
 import com.example.brandellpetty.brandell2017summer.ViewPagerActivity;
 
 import com.example.brandellpetty.brandell2017summer.adapter.ListNormalAdapter;
+import com.example.brandellpetty.brandell2017summer.audio.BaseBean;
 
 import java.util.ArrayList;
 
@@ -65,10 +69,10 @@ public class DemoFragment extends Fragment {
         contentList.add("Notification");
         contentList.add("AdvanceListView");
         contentList.add("AdvanceViewPager");
-        contentList.add("D");
         contentList.add("LaunchMode");
-        contentList.add("F");
-        contentList.add("G");
+        contentList.add("ActivityResult");
+        contentList.add("RadioGroup");
+        contentList.add("CheckBox");
         contentList.add("H");
         contentList.add("I");
         contentList.add("J");
@@ -119,9 +123,31 @@ public class DemoFragment extends Fragment {
                         Intent intent5 = new Intent(getActivity(), AdvanceViewPagerActivity.class);
                         startActivity(intent5);
                         break;
+                    case 6:
+                        Intent intent6 = new Intent(getActivity(), ActivityA.class);
+                        intent6.putExtra("StringInfo","fromDemoFragment");
+                        intent6.putExtra("IntegerInfo",10);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("StringBundle","FromBundleDemo");
+                        bundle.putInt("IntegerBundle",101);
+                        BaseBean bean = new BaseBean();
+                        bean.setName("bean");
+                        bundle.putSerializable("Object",bean);
+                        intent6.putExtra("Bundle",bundle);
+                        startActivity(intent6);
+                        break;
                     case 7:
-                        Intent intent7 = new Intent(getActivity(), ActivityA.class);
+                        Intent intent7 = new Intent(getActivity(), ResultActivity.class);
                         startActivity(intent7);
+                        break;
+                    case 8:
+                        Intent intent8 = new Intent(getActivity(), RadioGroupActivity.class);
+                        startActivity(intent8);
+                        break;
+                    case 9:
+                        Intent intent9 = new Intent(getActivity(), CheckBoxActivity.class);
+                        startActivity(intent9);
+                        break;
                     default:
                 }
             }
