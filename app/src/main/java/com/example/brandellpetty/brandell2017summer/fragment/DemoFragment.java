@@ -16,6 +16,7 @@ import com.example.brandellpetty.brandell2017summer.ActivityA;
 import com.example.brandellpetty.brandell2017summer.AdvanceListViewActivity;
 import com.example.brandellpetty.brandell2017summer.AdvanceViewPagerActivity;
 import com.example.brandellpetty.brandell2017summer.CheckBoxActivity;
+import com.example.brandellpetty.brandell2017summer.DialogActivity;
 import com.example.brandellpetty.brandell2017summer.NinePatchActivity;
 import com.example.brandellpetty.brandell2017summer.NotificationActivity;
 import com.example.brandellpetty.brandell2017summer.R;
@@ -73,7 +74,7 @@ public class DemoFragment extends Fragment {
         contentList.add("ActivityResult");
         contentList.add("RadioGroup");
         contentList.add("CheckBox");
-        contentList.add("H");
+        contentList.add("Dialog");
         contentList.add("I");
         contentList.add("J");
         contentList.add("K");
@@ -147,6 +148,10 @@ public class DemoFragment extends Fragment {
                     case 9:
                         Intent intent9 = new Intent(getActivity(), CheckBoxActivity.class);
                         startActivity(intent9);
+                        break;
+                    case 10:
+                        Intent intent10 = new Intent(getActivity(), DialogActivity.class);
+                        startActivity(intent10);
                         break;
                     default:
                 }

@@ -42,7 +42,8 @@
         <activity android:name=".ResultActivity" />
         <activity android:name=".ResultActivity2" />
         <activity android:name=".RadioGroupActivity" />
-        <activity android:name=".CheckBoxActivity"></activity>
+        <activity android:name=".CheckBoxActivity" />
+        <activity android:name=".DialogActivity"></activity>
     </application>
 
 </manifest>
