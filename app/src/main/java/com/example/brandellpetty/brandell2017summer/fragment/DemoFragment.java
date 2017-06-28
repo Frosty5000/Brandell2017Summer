@@ -16,8 +16,10 @@ import com.example.brandellpetty.brandell2017summer.ActivityA;
 import com.example.brandellpetty.brandell2017summer.AdvanceListViewActivity;
 import com.example.brandellpetty.brandell2017summer.AdvanceViewPagerActivity;
 import com.example.brandellpetty.brandell2017summer.AnimationActivity;
+import com.example.brandellpetty.brandell2017summer.AnimatorActivity;
 import com.example.brandellpetty.brandell2017summer.CheckBoxActivity;
 import com.example.brandellpetty.brandell2017summer.DialogActivity;
+import com.example.brandellpetty.brandell2017summer.GestureActivity;
 import com.example.brandellpetty.brandell2017summer.HandlerActivity;
 import com.example.brandellpetty.brandell2017summer.NinePatchActivity;
 import com.example.brandellpetty.brandell2017summer.NotificationActivity;
@@ -26,6 +28,7 @@ import com.example.brandellpetty.brandell2017summer.RadioGroupActivity;
 import com.example.brandellpetty.brandell2017summer.ResultActivity;
 import com.example.brandellpetty.brandell2017summer.RunnableHandlerActivity;
 import com.example.brandellpetty.brandell2017summer.ScaleTypeActivity;
+import com.example.brandellpetty.brandell2017summer.SharedPreferenceActivity;
 import com.example.brandellpetty.brandell2017summer.ViewPagerActivity;
 
 import com.example.brandellpetty.brandell2017summer.adapter.ListNormalAdapter;
@@ -80,10 +83,10 @@ public class DemoFragment extends Fragment {
         contentList.add("Dialog");
         contentList.add("Handler");
         contentList.add("HandlerRunnable");
+        contentList.add("Animation");
         contentList.add("Animator");
-        contentList.add("A");
-        contentList.add("B");
-        contentList.add("C");
+        contentList.add("Gesture");
+        contentList.add("SharedPreference");
     }
 
     @Override
@@ -170,6 +173,19 @@ public class DemoFragment extends Fragment {
                         Intent intent13 = new Intent(getActivity(), AnimationActivity.class);
                         startActivity(intent13);
                         break;
+                    case 14:
+                        Intent intent14 = new Intent(getActivity(), AnimatorActivity.class);
+                        startActivity(intent14);
+                        break;
+                    case 15:
+                        Intent intent15 = new Intent(getActivity(), GestureActivity.class);
+                        startActivity(intent15);
+                        break;
+                    case 16:
+                        Intent intent16 = new Intent(getActivity(), SharedPreferenceActivity.class);
+                        startActivity(intent16);
+                        break;
+
                     default:
                 }
             }
