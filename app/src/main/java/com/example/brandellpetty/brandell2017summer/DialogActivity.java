@@ -150,7 +150,7 @@ public class DialogActivity extends BaseActivity {
     ArrayList<Integer> choices = new ArrayList<>();
     private void multiChoiceDialog(){
         final String[] items = { "item1", "item2", "item3", "item4" };
-        final boolean initChoiceSets[] = {false, true, false, false};
+        final boolean initChoiceSets[] = {false, false, false, false};
         choices.clear();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Im a multi-choice Dialog");
