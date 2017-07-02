@@ -1,12 +1,16 @@
 package com.example.brandellpetty.brandell2017summer;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.IdRes;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.RadioGroup;
 
 import com.example.brandellpetty.brandell2017summer.dialog.CustomDialog;
@@ -21,7 +25,23 @@ import butterknife.OnClick;
 
 public class DialogActivity extends BaseActivity {
 
-    private int checkedID = 0;
+    private int checkedID;
+    private final int DIALOG = 12345;
+
+    Handler mHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what){
+                case DIALOG:
+                    Bundle bundle = msg.getData();
+                    String s = bundle.getString("msg");
+                    shortToast("Dialog Message:" +s);
+                    break;
+            }
+            super.handleMessage(msg);
+        }
+
+    };
 
     @BindView(R.id.activity_dialog)
     RadioGroup radioGroup;
@@ -32,24 +52,31 @@ public class DialogActivity extends BaseActivity {
         switch (checkedID){
             case R.id.activity_dialog_1:
                 shortToast("You chose the first one");
+                normalDiaglog();
                 break;
             case R.id.activity_dialog_2:
                 shortToast("You chose the second one");
+                listDialog();
                 break;
             case R.id.activity_dialog_3:
                 shortToast("You chose the third one");
+                singleChoiceDialog();
                 break;
             case R.id.activity_dialog_4:
                 shortToast("You chose the fourth one");
+                multiChoiceDialog();
                 break;
             case R.id.activity_dialog_5:
                 shortToast("You chose the fifth one");
+                waitingDialog();
                 break;
             case R.id.activity_dialog_6:
                 shortToast("You chose the sixth one");
+                progressDialog();
                 break;
             case R.id.activity_dialog_7:
                 shortToast("You chose the seventh one");
+                inputDialog();
                 break;
             case R.id.activity_dialog_8:
                 CustomDialog customDialog = new CustomDialog(this, new CustomDialog.ICustomDialogListener() {
@@ -196,36 +223,56 @@ public class DialogActivity extends BaseActivity {
         builder.show();
     }
 
-//    private void progressDialog(){
-//        final int MAX_PROGRESS = 100;
-//        final ProgressDialog progressDialog = new ProgressDialog(this);
-//        progressDialog.setProgress(0);
-//        progressDialog.setTitle("Downloading");
-//        progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-//        progressDialog.setMax(MAX_PROGRESS);
-//        progressDialog.show();
-//
-//
-//        new Thread(new Runnable(){
-//            @Override
-//            public void run(){
-//                int progress = 0;
-//                while (progress < MAX_PROGRESS){
-//                    try {
-//                        Thread.sleep(100);
-//                        progress++;
-//                        progressDialog.setProgress(progress);
-//                    } catch (InterruptedException e){
-//                        e.printStackTrace();
-//                    }
-//                }
-//
-//                Bundle bundle = new Bundle();
-//                bundle.putString("msg", "Download success");
-//
-//            }
-//        }
-//    }
+    private void progressDialog(){
+        final int MAX_PROGRESS = 100;
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setProgress(0);
+        progressDialog.setTitle("Downloading");
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        progressDialog.setMax(MAX_PROGRESS);
+        progressDialog.show();
+
+
+        new Thread(new Runnable(){
+            @Override
+            public void run(){
+                int progress = 0;
+                while (progress < MAX_PROGRESS){
+                    try {
+                        Thread.sleep(100);
+                        progress++;
+                        progressDialog.setProgress(progress);
+                    } catch (InterruptedException e){
+                        e.printStackTrace();
+                    }
+                }
+
+                Bundle bundle = new Bundle();
+                bundle.putString("msg", "Download success");
+                Message msg = Message.obtain();
+                msg.what = DIALOG;
+                msg.setData(bundle);
+                mHandler.sendMessage(msg);
+                progressDialog.cancel();
+
+            }
+        }).start();
+    }
+
+    private void inputDialog() {
+        final EditText editText = new EditText(this);
+        AlertDialog.Builder inputDialog =
+                new AlertDialog.Builder(this);
+        inputDialog.setTitle("I'm an input Dialog").setView(editText);
+        inputDialog.setPositiveButton("Yes",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        shortToast(editText.getText().toString());
+                    }
+                });
+        inputDialog.setNegativeButton("Cancel", null).show();
+    }
 
 
 }
