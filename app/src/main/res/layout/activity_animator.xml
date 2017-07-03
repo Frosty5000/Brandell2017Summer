@@ -55,8 +55,8 @@
             android:layout_alignParentRight="true"
             android:gravity="center"
             android:padding="10dp"
+            android:text="trans" />
 
-            android:text="trans"/>
         <Button
             android:id="@+id/animator_color"
             android:layout_width="110dp"
@@ -95,8 +95,6 @@
             android:layout_alignParentRight="true"
             android:gravity="center"
             android:text="scale"/>
-
-
 
     </GridLayout>
 

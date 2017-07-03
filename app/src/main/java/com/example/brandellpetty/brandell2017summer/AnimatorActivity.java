@@ -44,7 +44,7 @@ public class AnimatorActivity extends BaseActivity {
     @OnClick(R.id.animator_trans)
     public void trans(){
         ObjectAnimator animator =
-                ObjectAnimator.ofFloat(tv, "translationY", 100, -120);
+                ObjectAnimator.ofFloat(tv, "translationX", 0, -120);
         animator.setDuration(2000);
         animator.start();
     }
@@ -81,8 +81,8 @@ public class AnimatorActivity extends BaseActivity {
     @OnClick(R.id.animator_scale)
     public void scale(){
         ObjectAnimator animator =
-                ObjectAnimator.ofFloat(tv, "scaleY", 100, -120);
-        animator.setDuration(5000);
+                ObjectAnimator.ofFloat(tv, "scaleY", 0, 3, 1);
+        animator.setDuration(2000);
         animator.start();
     }
 
@@ -125,9 +125,9 @@ public class AnimatorActivity extends BaseActivity {
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
-                int curValue = (int)animation.getAnimatedValue();{
+                int curValue = (int)animation.getAnimatedValue();
                     tv.layout(tv.getLeft(), curValue, tv.getRight(), curValue+tv.getHeight());
-                }
+
             }
         });
 
