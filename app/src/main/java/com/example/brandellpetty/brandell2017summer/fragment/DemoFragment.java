@@ -28,6 +28,7 @@ import com.example.brandellpetty.brandell2017summer.RadioGroupActivity;
 import com.example.brandellpetty.brandell2017summer.ResultActivity;
 import com.example.brandellpetty.brandell2017summer.RunnableHandlerActivity;
 import com.example.brandellpetty.brandell2017summer.ScaleTypeActivity;
+import com.example.brandellpetty.brandell2017summer.ServiceActivity;
 import com.example.brandellpetty.brandell2017summer.SharedPreferenceActivity;
 import com.example.brandellpetty.brandell2017summer.ViewPagerActivity;
 
@@ -87,6 +88,7 @@ public class DemoFragment extends Fragment {
         contentList.add("Animator");
         contentList.add("Gesture");
         contentList.add("SharedPreference");
+        contentList.add("Service&Broadcast");
     }
 
     @Override
@@ -184,6 +186,10 @@ public class DemoFragment extends Fragment {
                     case 16:
                         Intent intent16 = new Intent(getActivity(), SharedPreferenceActivity.class);
                         startActivity(intent16);
+                        break;
+                    case 17:
+                        Intent intent17 = new Intent(getActivity(), ServiceActivity.class);
+                        startActivity(intent17);
                         break;
 
                     default:

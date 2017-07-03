@@ -4,18 +4,27 @@ import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.brandellpetty.brandell2017summer.dialog.CustomDialog;
+import com.example.brandellpetty.brandell2017summer.dialog.QuizDialog;
 import com.example.brandellpetty.brandell2017summer.fragment.DemoFragment;
 import com.example.brandellpetty.brandell2017summer.fragment.WorkFragment;
 
 import org.w3c.dom.Text;
 
-public class MainActivity extends AppCompatActivity {
+import butterknife.BindView;
+import butterknife.OnClick;
+
+public class MainActivity extends BaseActivity {
 
     private TextView tv_demo;
     private TextView tv_work;
+
+    @BindView(R.id.activity_radio_group)
+    RadioGroup radioGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,4 +78,17 @@ public class MainActivity extends AppCompatActivity {
     public void submit(View v){
         Toast.makeText(MainActivity.this, "Submitted!", Toast.LENGTH_SHORT).show();
     }
+
+    public void quiz2(View v){
+        QuizDialog quizDialog = new QuizDialog(this, new QuizDialog.QuizDialogListener() {
+            @Override
+            public void onOKClicked(String msg) {
+                shortToast(msg);
+            }
+        });
+        quizDialog.setCanceledOnTouchOutside(true);
+        quizDialog.show();
+    }
+
+
 }

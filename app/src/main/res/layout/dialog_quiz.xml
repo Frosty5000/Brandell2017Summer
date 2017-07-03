@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="275dp"
+    android:background="@android:color/darker_gray"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/dialog_quiz_tv"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Quiz 3"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:background="@android:color/white"
+        android:textColor="@android:color/black"/>
+<RadioGroup
+    android:id="@+id/radio_group_quiz"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RadioButton
+        android:id="@+id/dialog_quiz_yes"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_below="@id/dialog_custom_tv"
+        android:background="@android:color/black"
+        android:text="Yes"/>
+    <RadioButton
+        android:id="@+id/dialog_quiz_no"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_below="@id/dialog_custom_tv"
+        android:background="@android:color/black"
+        android:text="No"/>
+    <RadioButton
+        android:id="@+id/dialog_quiz_exit"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_below="@id/dialog_custom_tv"
+        android:background="@android:color/black"
+        android:text="Exit"/>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+    <Button
+        android:id="@+id/dialog_quiz_cancel"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:text="Cancel"
+        android:textAllCaps="false"/>
+    <Button
+        android:id="@+id/dialog_quiz_ok"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:text="OK"/>
+</LinearLayout>
+</RadioGroup>
+
+</LinearLayout>

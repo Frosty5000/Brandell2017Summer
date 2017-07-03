@@ -52,7 +52,7 @@ public class DialogActivity extends BaseActivity {
         switch (checkedID){
             case R.id.activity_dialog_1:
                 shortToast("You chose the first one");
-                normalDiaglog();
+                normalDialog();
                 break;
             case R.id.activity_dialog_2:
                 shortToast("You chose the second one");
@@ -107,7 +107,7 @@ public class DialogActivity extends BaseActivity {
 
     }
 
-    private void normalDiaglog(){
+    private void normalDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setIcon(R.mipmap.ic_launcher);
         builder.setTitle("AlertTitle");
