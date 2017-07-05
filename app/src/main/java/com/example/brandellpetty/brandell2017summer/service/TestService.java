@@ -26,7 +26,7 @@ public class TestService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
 
         String value = intent.getStringExtra("Service");
-        timer.schedule(new updateTask(), 0, 2000);
+//        timer.schedule(new updateTask(), 0, 2000);
         if(value.equals("Start")) {
             timer.schedule(new updateTask(), 0, 2000);
         }
@@ -35,6 +35,14 @@ public class TestService extends Service {
         }
         return super.onStartCommand(intent, flags, startId);
     }
+
+
+//   public int onStopCommand(Intent intent, int flags, int startId){
+//        String value = intent.getStringExtra("Service");
+//        timer.cancel();
+//        return  super.onStopCommand(intent, flags, startId);
+//
+//    }
 
     @Nullable
     @Override

@@ -15,6 +15,14 @@
         android:gravity="center"
         android:layout_alignParentTop="true" />
 
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="111dp"
+        android:layout_below="@+id/activity_service_tv"
+        android:layout_centerHorizontal="true">
     <Button
         android:id="@+id/activity_service_start"
         android:layout_width="match_parent"
@@ -23,5 +31,14 @@
         android:layout_centerInParent="true"
         android:gravity="center"
         android:textSize="30sp"/>
+    <Button
+        android:id="@+id/activity_service_stop"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Stop Service"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:textSize="30sp"/>
+    </LinearLayout>
 
 </RelativeLayout>

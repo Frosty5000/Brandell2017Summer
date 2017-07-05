@@ -31,6 +31,15 @@ public class ServiceActivity extends AppCompatActivity {
         registerBroadcast();
     }
 
+    @OnClick(R.id.activity_service_stop)
+    public void stopService(View v){
+        Intent intent = new Intent(this, TestService.class);
+        intent.putExtra("Service","Stop");
+        startService(intent);
+        registerBroadcast();
+
+    }
+
     private void registerBroadcast() {
         testReceiver = new TestReceiver();
         IntentFilter filter = new IntentFilter();
