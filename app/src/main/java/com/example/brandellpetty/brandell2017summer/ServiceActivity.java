@@ -36,7 +36,6 @@ public class ServiceActivity extends AppCompatActivity {
         Intent intent = new Intent(this, TestService.class);
         intent.putExtra("Service","Stop");
         startService(intent);
-        registerBroadcast();
 
     }
 

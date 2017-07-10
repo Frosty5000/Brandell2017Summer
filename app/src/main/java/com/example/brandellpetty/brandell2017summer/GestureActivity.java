@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import com.example.brandellpetty.brandell2017summer.util.UtilLog;
 
-import org.w3c.dom.Text;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -42,6 +41,9 @@ public class GestureActivity extends BaseActivity implements View.OnTouchListene
     }
 
     private class simpleGestureListener extends GestureDetector.SimpleOnGestureListener{
+
+        boolean isToast = false;
+
         @Override
         public boolean onSingleTapUp(MotionEvent e) {
             UtilLog.d("Gesture", "onSingleTapUp");
@@ -61,32 +63,59 @@ public class GestureActivity extends BaseActivity implements View.OnTouchListene
             UtilLog.d("Gesture", "distanceY"+ distanceY);
             sumX += distanceX;
             sumY += distanceY;
+         //   isToast = false;
+            if(!isToast){
+                if (sumX<0){
+                    if(Math.abs(sumX)>1000){
+                        isToast = true;
+                        shortToast("You scroll from left ro right");
+                    }
+                }
+                if (sumX>0){
+                    if(Math.abs(sumX)>1000){
+                        isToast = true;
+                        shortToast("You scroll from right ro left");
+                    }
+                }
+                if (sumY<0){
+                    if(Math.abs(sumX)>1000){
+                        isToast = true;
+                        shortToast("You scroll from top to bottom");
+                    }
+                }
+                if (sumY<0){
+                    if(Math.abs(sumX)>1000){
+                        isToast = true;
+                        shortToast("You scroll from bottom to top");
+                    }
+                }
+            }
             return super.onScroll(e1, e2, distanceX, distanceY);
         }
 
         @Override
         public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
             UtilLog.d("Gesture", "onFling");
-            if (sumX<0){
-                if(Math.abs(sumX)>200){
-                    shortToast("You scroll from left ro right");
-                }
-            }
-            if (sumX>0){
-                if(Math.abs(sumX)>200){
-                    shortToast("You scroll from right ro left");
-                }
-            }
-            if (sumY<0){
-                if(Math.abs(sumX)>200){
-                    shortToast("You scroll from top to bottom");
-                }
-            }
-            if (sumY<0){
-                if(Math.abs(sumX)>200){
-                    shortToast("You scroll from bottom to top");
-                }
-            }
+//            if (sumX<0){
+//                if(Math.abs(sumX)>200){
+//                    shortToast("You scroll from left ro right");
+//                }
+//            }
+//            if (sumX>0){
+//                if(Math.abs(sumX)>200){
+//                    shortToast("You scroll from right ro left");
+//                }
+//            }
+//            if (sumY<0){
+//                if(Math.abs(sumX)>200){
+//                    shortToast("You scroll from top to bottom");
+//                }
+//            }
+//            if (sumY>0){
+//                if(Math.abs(sumX)>200){
+//                    shortToast("You scroll from bottom to top");
+//                }
+//            }
             return super.onFling(e1, e2, velocityX, velocityY);
         }
 

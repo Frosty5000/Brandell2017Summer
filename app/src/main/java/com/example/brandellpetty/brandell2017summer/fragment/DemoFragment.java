@@ -30,6 +30,7 @@ import com.example.brandellpetty.brandell2017summer.RunnableHandlerActivity;
 import com.example.brandellpetty.brandell2017summer.ScaleTypeActivity;
 import com.example.brandellpetty.brandell2017summer.ServiceActivity;
 import com.example.brandellpetty.brandell2017summer.SharedPreferenceActivity;
+import com.example.brandellpetty.brandell2017summer.TestAudioActivity;
 import com.example.brandellpetty.brandell2017summer.ViewPagerActivity;
 
 import com.example.brandellpetty.brandell2017summer.adapter.ListNormalAdapter;
@@ -89,6 +90,8 @@ public class DemoFragment extends Fragment {
         contentList.add("Gesture");
         contentList.add("SharedPreference");
         contentList.add("Service&Broadcast");
+        contentList.add("TestAudioPlayer");
+        contentList.add("AudioPlayer");
     }
 
     @Override
@@ -191,7 +194,14 @@ public class DemoFragment extends Fragment {
                         Intent intent17 = new Intent(getActivity(), ServiceActivity.class);
                         startActivity(intent17);
                         break;
-
+                    case 18:
+                        Intent intent18 = new Intent(getActivity(), TestAudioActivity.class);
+                        startActivity(intent18);
+                        break;
+//                    case 18:
+//                        Intent intent18 = new Intent(getActivity(), ServiceActivity.class);
+//                        startActivity(intent18);
+//                        break;
                     default:
                 }
             }

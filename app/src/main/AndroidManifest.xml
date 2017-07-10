@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.brandellpetty.brandell2017summer">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <provider
         android:name=".content."
         android:authorities="com.example.brandellpetty.brandell2017summer"
@@ -55,10 +57,12 @@
         <activity android:name=".AnimatorActivity" />
         <activity android:name=".GestureActivity" />
         <activity android:name=".SharedPreferenceActivity" />
-        <activity android:name=".ServiceActivity"/>
-        <service android:name=".service.TestService"/>
+        <activity android:name=".ServiceActivity" />
 
+        <service android:name=".service.TestService" />
 
+        <activity android:name=".TestAudioActivity" />
+        <activity android:name=".Quiz5Activity"></activity>
     </application>
 
 </manifest>

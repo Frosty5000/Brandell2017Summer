@@ -1,5 +1,6 @@
 package com.example.brandellpetty.brandell2017summer;
 
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -13,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.AbsListView;
 
 import com.example.brandellpetty.brandell2017summer.adapter.AdvanceListViewAdapter;
 import com.example.brandellpetty.brandell2017summer.adapter.BaseViewPagerAdapter;
@@ -26,10 +28,16 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static android.R.id.tabs;
+
 public class AdvanceListViewActivity extends AppCompatActivity{
 
+    private TabLayout tabs;
+    private ViewPager viewPager;
+    private ArrayList<Fragment> list2 = new ArrayList<Fragment>();
+
     @BindView(R.id.activity_advance_list_view) ListView lv;
-    private ArrayList<Fragment> list1 = new ArrayList<Fragment>();
+    private ArrayList<String> list1 = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,49 +45,44 @@ public class AdvanceListViewActivity extends AppCompatActivity{
         setContentView(R.layout.activity_advance);
         ButterKnife.bind(this);
         ArrayList<String> list = new ArrayList<>();
-        list.add("Hello");
-        list.add("Hello, how are you?");
-        list.add("I'm fine, thank you!");
-        list.add("So what's up?");
-        list.add("I'm having a get together later this Saturday, would you like to come?");
-        list.add("I may have to work that day, but if I don't have to, sure!");
-        list.add("Cool! If you do show up you can bring whoever you want.");
-        list.add("Most likely will be bringing a friend to tag along then!");
-        list.add("The get together starts at 8pm.");
-        list.add("I actually get off of work at 6pm!");
-        list.add("Oh great!");
-        list.add("I'll definitely stop by, see you then!");
-        AdvanceListViewAdapter adapter = new AdvanceListViewAdapter(this, list);
+        list1.add("Hello");
+        list1.add("Hello, how are you?");
+        list1.add("I'm fine, thank you!");
+        list1.add("So what's up?");
+        list1.add("I'm having a get together later this Saturday, would you like to come?");
+        list1.add("I may have to work that day, but if I don't have to, sure!");
+        list1.add("Cool! If you do show up you can bring whoever you want.");
+        list1.add("Most likely will be bringing a friend to tag along then!");
+        list1.add("The get together starts at 8pm.");
+        list1.add("I actually get off of work at 6pm!");
+        list1.add("Oh great!");
+        list1.add("I'll definitely stop by, see you then!");
+        AdvanceListViewAdapter adapter = new AdvanceListViewAdapter(this, list1);
         lv.setAdapter(adapter);
 
+        viewPager = (ViewPager)findViewById(R.id.activity_view_pager);
+        list2.add(new RedFragment());
+        list2.add(new GreenFragment());
+        list2.add(new BlueFragment());
+        BaseViewPagerAdapter pagerAdapter =
+                new BaseViewPagerAdapter(getSupportFragmentManager(), list2);
+        viewPager.setAdapter(pagerAdapter);
+        viewPager.setCurrentItem(0);
 
-//        ViewPager viewPager = (ViewPager) findViewById(R.id.activity_view_pager);
-//        list1.add(new RedFragment());
-//        list1.add(new GreenFragment());
-//        list1.add(new BlueFragment());
+//        TextView tv = new TextView(this);
+//        tv.setTextSize(50);
+//        tv.setText("HeaderView");
+//        lv.addHeaderView(viewPager);
+//        lv.setAdapter(adapter);
 
-//        BaseViewPagerAdapter pagerAdapter =
-//                new BaseViewPagerAdapter(getSupportFragmentManager(), list1);
-//        viewPager.setAdapter(pagerAdapter);
-//        viewPager.setCurrentItem(1);
-
-        TextView tv = new TextView(this);
-        tv.setTextSize(50);
-        tv.setText("HeaderView");
-        lv.addHeaderView(tv);
-        lv.setAdapter((ListAdapter) adapter);
+       // tabs = (TabLayout)findViewById(R.id.tab_layout);
+//        tabs.setupWithViewPager(viewPager);
+//        tabs.setTabMode(TabLayout.MODE_SCROLLABLE);
 
         TextView tv1 = new TextView(this);
-        tv1.setTextSize(50);
-        tv1.setText("FooterView");
+        tv1.setTextSize(20);
+        tv1.setText("Enter text . . .");
         lv.addFooterView(tv1);
-
-//        lv.setOnClickListener(new AdapterView.OnItemClickListener(){
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id){
-//                showToast(String.valueOf(position));
-//            }
-//        });
 
     }
 
@@ -118,5 +121,7 @@ public class AdvanceListViewActivity extends AppCompatActivity{
         super.onRestart();
         Log.d("LifeCycle","onRestart");
     }
+
+
 
 }

@@ -1,5 +1,6 @@
 package com.example.brandellpetty.brandell2017summer;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -76,7 +77,9 @@ public class MainActivity extends BaseActivity {
     }
 
     public void submit(View v){
-        Toast.makeText(MainActivity.this, "Submitted!", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(MainActivity.this, "Submitted!", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, Quiz5Activity.class);
+        startActivity(intent);
     }
 
     public void quiz2(View v){
@@ -88,6 +91,7 @@ public class MainActivity extends BaseActivity {
         });
         quizDialog.setCanceledOnTouchOutside(true);
         quizDialog.show();
+
     }
 
 
