@@ -1,107 +1,160 @@
 package com.example.brandellpetty.brandell2017summer;
 
-import android.animation.ObjectAnimator;
+import android.animation.Animator;
 import android.animation.ValueAnimator;
-import android.gesture.Gesture;
-import android.gesture.GestureOverlayView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.animation.BounceInterpolator;
 import android.widget.TextView;
-
-import com.example.brandellpetty.brandell2017summer.util.UtilLog;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
-import butterknife.OnTouch;
+import com.example.brandellpetty.brandell2017summer.util.UtilDensity;
+import com.example.brandellpetty.brandell2017summer.util.UtilLog;
 
-public class Quiz5Activity extends BaseActivity implements View.OnTouchListener {
+public class Quiz5Activity extends BaseActivity implements View.OnTouchListener{
+    private boolean isOpen = false;
 
+
+    @BindView(R.id.activity_quiz5_bg)
+    View view;
     private GestureDetector gestureDetector;
-    private int sumX = 0;
 
     @BindView(R.id.activity_gesture_bingo)
     TextView tv;
+    private ValueAnimator openAnimator;
+    private ValueAnimator closeAnimator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz5);
         ButterKnife.bind(this);
-        gestureDetector = new GestureDetector(this, new simpleGestureListener());
-        tv.setOnTouchListener(this);
+        gestureDetector = new GestureDetector(this, new GestureListener());
+        view.setOnTouchListener(this);
+        view.setLongClickable(true);
+        openAnimator = openAnimatorListener();
+        closeAnimator = closeAnimatorListener();
     }
 
     @Override
-    public boolean onTouch(View v, MotionEvent event) {
-//
-//        if(clicked = false){
-//            ObjectAnimator animator =
-//                    ObjectAnimator.ofFloat(tv, "translationX", 0, -450);
-//            animator.setDuration(500);
-//            animator.start();
-//            shortToast("Right to left");
-//
-//        }
-//        else if(clicked){
-//            ObjectAnimator animator =
-//                    ObjectAnimator.ofFloat(tv, "translationX", -450, 0);
-//            animator.setDuration(500);
-//            animator.start();
-//            shortToast("Left to right");
-//        }
-        return gestureDetector.onTouchEvent(event);
+    public boolean onTouch(View view, MotionEvent motionEvent) {
+        return gestureDetector.onTouchEvent(motionEvent);
     }
 
+    private class GestureListener extends GestureDetector.SimpleOnGestureListener{
 
-
-    private class simpleGestureListener extends GestureDetector.SimpleOnGestureListener{
-        boolean isToast = true;
-//
-//        @Override
-//        public boolean onSingleTapUp(MotionEvent e) {
-//            UtilLog.d("Gesture", "onSingleTapUp");
-//            return super.onSingleTapUp(e);
-//        }
-//
-//        @Override
-//        public void onLongPress(MotionEvent e) {
-//            UtilLog.d("Gesture", "onLongPress");
-//            super.onLongPress(e);
-//        }
-
+        private boolean isMove = false;
+        private int sumX = 0;
+        private boolean isSwap = false;
         @Override
         public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-            sumX += distanceX;
-            //   isToast = false;
-            if(!isToast){
-                if (sumX>=0){
-                    if(Math.abs(sumX)>200){
-                        isToast = true;
-                        ObjectAnimator animator =
-                                ObjectAnimator.ofFloat(tv, "translationX", 0, -450);
-                        animator.setDuration(0);
-                        animator.start();
-                        shortToast("Right to left");
+            float x = e1.getRawX();
+            if (x<100){
+                isSwap = true;
+            }
+            sumX+=distanceX;
+            if (!isMove){
+                if(sumX<0){
+                    if(Math.abs(sumX)>500){
+                        if(isSwap){
+                            isMove = true;
+                            shortToast("left to right");
+                            if(!isOpen){
+                                openAnimator.start();
+                                isOpen=true;
+                            }
+                        }
                     }
                 }
-                if (sumX<0){
-                    if(Math.abs(sumX)<200){
-                        isToast = true;
-                        ObjectAnimator animator =
-                                ObjectAnimator.ofFloat(tv, "translationX", -450, 0);
-                        animator.setDuration(0);
-                        animator.start();
-                        shortToast("Left to right");
+                if(sumX>0){
+                    if(Math.abs(sumX)>500){
+                        isMove = true;
+                        shortToast("right to left");
+                        if(isOpen){
+                            closeAnimator.start();
+                            isOpen=false;
+                        }
                     }
                 }
+
             }
             return super.onScroll(e1, e2, distanceX, distanceY);
         }
+
+        @Override
+        public boolean onDown(MotionEvent e) {
+//            shortToast("onDown");
+            isMove = false;
+            sumX = 0;
+            isSwap = false;
+            return super.onDown(e);
+        }
     }
+
+    private ValueAnimator openAnimatorListener(){
+        ValueAnimator animator = ValueAnimator.ofInt(UtilDensity.dip2px(this,-250), 0);
+
+        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                int curValue = (int)animation.getAnimatedValue();
+//                tv.layout(tv.getLeft(),curValue,tv.getRight(),curValue+tv.getHeight());
+                tv.layout(curValue,tv.getTop(),curValue+tv.getWidth(),tv.getHeight());
+            }
+        });
+        animator.addListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+                tv.setVisibility(View.VISIBLE);
+            }
+            @Override
+            public void onAnimationEnd(Animator animation) {
+            }
+            @Override
+            public void onAnimationCancel(Animator animation) {
+            }
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+            }
+        });
+        animator.setDuration(1000);
+        return animator;
+    }
+
+    private ValueAnimator closeAnimatorListener(){
+        ValueAnimator animator = ValueAnimator.ofInt(0,UtilDensity.dip2px(this,-250));
+
+        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                int curValue = (int)animation.getAnimatedValue();
+//                tv.layout(tv.getLeft(),curValue,tv.getRight(),curValue+tv.getHeight());
+                tv.layout(curValue,tv.getTop(),curValue+tv.getWidth(),tv.getHeight());
+            }
+        });
+        animator.addListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+                tv.setVisibility(View.VISIBLE);
+            }
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                tv.setVisibility(View.INVISIBLE);
+            }
+            @Override
+            public void onAnimationCancel(Animator animation) {
+            }
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+            }
+        });
+        animator.setDuration(1000);
+        return animator;
+    }
+
 
 }
